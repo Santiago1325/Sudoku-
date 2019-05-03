@@ -3,6 +3,7 @@ import SudokuGenerator
 s = SudokuGenerator.fullSudoku()
 
 def checkSudoku(sudoku):
+    """Verifica si el Sudoku ya esta solucionado"""
     for line in sudoku:
         for number in line:
             if number == "X":
@@ -12,6 +13,7 @@ def checkSudoku(sudoku):
     return True
 
 def isSafe(sudoku, colu, lin, number):
+    """Verifica si el numero no se repite ni en la fila, columna y caja de 3x3"""
     box = SudokuGenerator.Box(sudoku, colu, lin)
     line = SudokuGenerator.Line(sudoku, lin)
     column = SudokuGenerator.Column(sudoku, colu)
@@ -25,30 +27,25 @@ def isSafe(sudoku, colu, lin, number):
             return False
     else:
         return False
-    
+
     
     
 def Backtracking(sudoku):
+    changes = []
     for n in range(81):
         fila = n // 9
         col = n % 9
-        print("Fila", fila)
-        print("Col", col)
         for c in range (1,10):
-            print("Candidato",c)
             if sudoku[fila][col] == "X":
                 if isSafe(sudoku, col, fila, c):
-                    print("Celda Fila {0} Col {1}, reemplazada por: {2}".format(fila, col, c))
                     sudoku[fila][col] = c
+                    changes.append((fila,col))
+                    break
                 else:
-                    print(c,"No es valido")
-                    sudoku[fila][col] = "X"
+                    sudoku[fila][col] = "X"            
             else:
-                print("Celda llena. Fila {0}, Col {1}".format(fila, col))
                 break
-                
-
-
+    print(changes)
     return sudoku
 
 
