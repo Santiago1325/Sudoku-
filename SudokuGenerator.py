@@ -21,33 +21,35 @@ def Column(sudoku, position):
     """Retorna la columna del Sudoku"""
     return [line[position] for line in sudoku]
 
-def Box(sudoku, pos, pos2):
+def Box(sudoku, col, fil):
     """Retorna la celda de 3x3 de acuerdo a la posicion del numero"""
-    #pos = columna
-    #pos2 = linea
     celda = []
-    if 0 <= pos and pos < 3:
-        if 0 <= pos2 and pos2 < 3:
+    if col == 0 or col == 1 or col == 2:
+        if fil == 0 or fil == 1 or fil == 2:
             celda = sudoku[0][0:3] + sudoku[1][0:3] + sudoku[2][0:3]
-        elif 3 <= pos2 and pos2 < 6:
-            celda = sudoku[0][3:6] + sudoku[1][3:6] + sudoku[2][3:6]
-        elif 6 <= pos2 and pos2 < 9:
-            celda = sudoku[0][6:9] + sudoku[1][6:9] + sudoku[2][6:9]
-    elif 3 <= pos and pos < 6:
-        if 0 <= pos2 and pos2 < 3:
+        elif fil == 3 or fil == 4 or fil == 5:
             celda = sudoku[3][0:3] + sudoku[4][0:3] + sudoku[5][0:3]
-        elif 3 <= pos2 and pos2 < 6:
-            celda = sudoku[3][3:6] + sudoku[4][3:6] + sudoku[5][3:6]
-        elif 6 <= pos2 and pos2 < 9:
-            celda = sudoku[3][6:9] + sudoku[4][6:9] + sudoku[5][6:9]
-    elif 6 <= pos and pos < 9:
-        if 0 <= pos2 and pos2 < 3:
+        elif fil == 6 or fil == 7 or fil == 8:
             celda = sudoku[6][0:3] + sudoku[7][0:3] + sudoku[8][0:3]
-        elif 3 <= pos2 and pos2 < 6:
+    if col == 3 or col == 4 or col == 5:
+        if fil == 0 or fil == 1 or fil == 2:
+            celda = sudoku[0][3:6] + sudoku[1][3:6] + sudoku[2][3:6]
+        elif fil == 3 or fil == 4 or fil == 5:
+            celda = sudoku[3][3:6] + sudoku[4][3:6] + sudoku[5][3:6]
+        elif fil == 6 or fil == 7 or fil == 8:
             celda = sudoku[6][3:6] + sudoku[7][3:6] + sudoku[8][3:6]
-        elif 6 <= pos2 and pos2 < 9:
+    if col == 6 or col == 7 or col == 8:
+        if fil == 0 or fil == 1 or fil == 2:
+            celda = sudoku[0][6:9] + sudoku[1][6:9] + sudoku[2][6:9]
+        elif fil == 3 or fil == 4 or fil == 5:
+            celda = sudoku[3][6:9] + sudoku[4][6:9] + sudoku[5][6:9]
+        elif fil == 6 or fil == 7 or fil == 8:
             celda = sudoku[6][6:9] + sudoku[7][6:9] + sudoku[8][6:9]
-    return celda
+    return celda        
+    
+            
+             
+        
 
 
 def swapLines(sudoku):
@@ -166,9 +168,9 @@ def fullSudoku():
     sudoku = Sudoku()
     sudoku2 = swapColumns(sudoku)
     removeNumbers(sudoku2, diff)
-    printSudoku(sudoku2)
+    return sudoku2
     
 
-fullSudoku()
+
 
         
