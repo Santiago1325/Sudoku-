@@ -7,9 +7,7 @@ def checkSudoku(sudoku):
     for line in sudoku:
         for number in line:
             if number == "X":
-                print("Sudoku sin resolver")
                 return False
-    print("Sudoku completado")
     return True
 
 def isSafe(sudoku, colu, lin, number):
@@ -28,32 +26,38 @@ def isSafe(sudoku, colu, lin, number):
     else:
         return False
 
+
     
     
 def Backtracking(sudoku):
-    changes = []
+    """Funcion recursiva que soluciona el Sudoku"""
     for n in range(81):
         fila = n // 9
         col = n % 9
-        for c in range (1,10):
-            if sudoku[fila][col] == "X":
+        if sudoku[fila][col] == "X":
+            for c in range (1,10):
                 if isSafe(sudoku, col, fila, c):
                     sudoku[fila][col] = c
-                    changes.append((fila,col))
-                    break
-                else:
-                    sudoku[fila][col] = "X"            
-            else:
-                break
-    print(changes)
-    return sudoku
-
-
+                    if checkSudoku(sudoku):
+                        print("Sudoku terminado")
+                        return True
+                    if Backtracking(sudoku):
+                        return True
+                    sudoku[fila][col] = "X"
+            return False
+                        
+    
 SudokuGenerator.printSudoku(s)
-sudokures = Backtracking(s)
-print("\n")
-SudokuGenerator.printSudoku(sudokures)
-                                
+Backtracking(s)
+print()
+SudokuGenerator.printSudoku(s)
+            
+            
+                        
+                        
+
+
+
                                 
         
                     
