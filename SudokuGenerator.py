@@ -83,15 +83,6 @@ def removeNumbers(sudoku,diff):
     2 = Intermedio
     3 = Dificil
     """
-#    if diff == 1:
-#        print("Dificultad: Facil")
-#        print()
-#    if diff == 2:
-#        print("Dificultad: Intermedia")
-#        print()
-#    if diff == 3:
-#        print("Dificultad: Dificil")
-#        print()
     if 0 >= diff or diff > 3:
         myError = ValueError("{0} no es una dificultad valida. (Dificultades de 1 a 3)".format(diff))
         raise myError
@@ -99,8 +90,6 @@ def removeNumbers(sudoku,diff):
     clue = 0
     if diff == 1:
         nc = random.randint(32,42)
-#        print("N° de pistas:",81 - nc)
-#        print()
         while clue < nc:    
             n1 = random.randint(0,8)
             n2 = random.randint(0,8)
@@ -111,8 +100,6 @@ def removeNumbers(sudoku,diff):
                 clue += 1
     elif diff == 2:
         nc = random.randint(43,53)
-#        print("N° de pistas:",81 - nc)
-#        print()
         while clue < nc:    
             n1 = random.randint(0,8)
             n2 = random.randint(0,8)
@@ -123,8 +110,6 @@ def removeNumbers(sudoku,diff):
                 clue += 1
     elif diff == 3:
         nc = random.randint(54,64)
-#        print("N° de pistas:",81 - nc)
-#        print()
         while clue < nc:    
             n1 = random.randint(0,8)
             n2 = random.randint(0,8)
@@ -137,27 +122,6 @@ def removeNumbers(sudoku,diff):
         for n in range(9):
             if sudoku[l][n] == 0:
                 sudoku[l][n] = "X"
-
-       
-#def printSudoku(sudoku):
-#    """Imprime el Sudoku"""    
-#    count2 = 1
-#    for row in sudoku:
-#        count = 1
-#        for number in row:
-#            if count % 3 != 0:
-#                print(number,end=" ")
-#                count += 1
-#            else:
-#                print(number,end="  ")
-#                count += 1
-#        if count2 % 3 != 0:
-#            print()
-#            count2 += 1
-#        else:
-#            print()
-#            print()
-#            count2 += 1
             
 def fullSudoku(diff):
     """Genera un Sudoku valido para ser resuelto dependiendo de la dificultad seleccionada"""
