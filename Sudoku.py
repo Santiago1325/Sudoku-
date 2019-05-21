@@ -284,15 +284,15 @@ def main():
                         Menu = True
                 if event.type == KEYDOWN:
                     if event.key == K_f:
-                        Svacio2 = SudokuGenerator.fullSudoku(1)
+                        Svacio2, sol = SudokuGenerator.fullSudoku(1)
                         dif = "Dificultad: Facil"
                         default = defaultNumbers(Svacio2)
                     if event.key == K_m:
-                        Svacio2 = SudokuGenerator.fullSudoku(2)
+                        Svacio2, sol = SudokuGenerator.fullSudoku(2)
                         dif = "Dificultad: Intermedia"   
                         default = defaultNumbers(Svacio2)
                     if event.key == K_d:
-                        Svacio2 = SudokuGenerator.fullSudoku(3)
+                        Svacio2, sol = SudokuGenerator.fullSudoku(3)
                         dif = "Dificultad: Dificil"
                         default = defaultNumbers(Svacio2)
 
@@ -334,7 +334,7 @@ def main():
                             dif = "Sudoku Incompleto/Incorrecto"
                 if event.type == KEYDOWN:
                     if event.key == K_r:
-                        SudokuBacktracking.Backtracking(Svacio2)
+                        Svacio2 = sol
                         dif = "Sudoku Resuelto"
                             
                 if event.type == MOUSEBUTTONDOWN:

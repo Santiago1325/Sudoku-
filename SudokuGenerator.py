@@ -1,4 +1,5 @@
 import random
+import copy
 
 def Sudoku():
     """Inicializa el Sudoku con un sodoku valido ya establecido"""
@@ -127,8 +128,9 @@ def fullSudoku(diff):
     """Genera un Sudoku valido para ser resuelto dependiendo de la dificultad seleccionada"""
     sudoku = Sudoku()
     sudoku2 = swapColumns(sudoku)
+    sol = copy.deepcopy(sudoku2)
     removeNumbers(sudoku2, diff)
-    return sudoku2
+    return sudoku2, sol
 
 def resetGrid():
     """Genera un Sudoku vacio"""
